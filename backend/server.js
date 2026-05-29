@@ -1,0 +1,17 @@
+const express = require('express');
+const app = express();
+const port = 5000;
+const cors = require('cors');
+const mongoose = require('mongoose');
+const taskRoutes = require('./routes/tasks')
+const sessionRoutes = require('./routes/sessions')
+require('dotenv').config();
+app.use(cors())
+app.use(express.json())
+mongoose.connect(process.env.MONGO_URI).then(()=> console.log('Connected to MongoDB')).catch((err)=> console.log(err))
+app.use('/api/tasks',taskRoutes)
+app.use('/api/sessions',sessionRoutes)
+app.listen(port,()=> {
+    console.log(`app listening on port ${port}`)});
+
+
