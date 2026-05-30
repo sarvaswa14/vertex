@@ -12,7 +12,7 @@ function Focus() {
   const headers = { Authorization: `Bearer ${token}` }
 
   useEffect(() => {
-    axios.get('${API_URL}/api/sessions', { headers })
+    axios.get(`${API_URL}/api/sessions`, { headers })
       .then(res => setSessions(res.data))
   }, [])
 

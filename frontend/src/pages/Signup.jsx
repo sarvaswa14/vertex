@@ -16,7 +16,7 @@ function Signup() {
     setLoading(true)
     setError('')
     try {
-      await axios.post('${API_URL}/api/auth/register', { name, email, password })
+      await axios.post(`${API_URL}/api/auth/register`, { name, email, password })
       navigate('/login')
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong')

@@ -14,7 +14,7 @@ function Login() {
     setLoading(true)
     setError('')
     try {
-      const response = await axios.post('${API_URL}/api/auth/login', { email, password })
+      const response = await axios.post(`${API_URL}/api/auth/login`, { email, password })
       localStorage.setItem('token', response.data.token)
       navigate('/dashboard')
     } catch (err) {

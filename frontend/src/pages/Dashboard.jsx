@@ -9,10 +9,10 @@ function Dashboard() {
     const token = localStorage.getItem('token')
     const headers = { Authorization: `Bearer ${token}` }
     
-    axios.get('${API_URL}/api/tasks', { headers })
+    axios.get(`${API_URL}/api/tasks`, { headers })
       .then(res => setTasks(res.data))
     
-    axios.get('${API_URL}/api/sessions', { headers })
+    axios.get(`${API_URL}/api/sessions`, { headers })
       .then(res => setSessions(res.data))
   }, [])
 
