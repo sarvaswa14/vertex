@@ -1,4 +1,4 @@
-# Vertexx
+# Vertex
 
 Built this as a productivity app to organize tasks, track focus sessions and take notes.
 
