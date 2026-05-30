@@ -28,7 +28,7 @@ function Sidebar() {
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <span className="text-sm font-semibold" style={{ color: 'var(--text)' }}>Vertexx</span>
+          <span className="text-sm font-semibold" style={{ color: 'var(--text)' }}>Vertex</span>
         </div>
       </div>
 

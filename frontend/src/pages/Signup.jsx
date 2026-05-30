@@ -34,7 +34,7 @@ function Signup() {
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <h1 style={{ color: '#f0f4ff', fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em' }}>Vertexx</h1>
+          <h1 style={{ color: '#f0f4ff', fontSize: '1.5rem', fontWeight: 600, letterSpacing: '-0.02em' }}>Vertex</h1>
           <p style={{ color: '#4a5568', fontSize: '0.8rem', marginTop: '0.25rem' }}>Your productivity workspace</p>
         </div>
 
