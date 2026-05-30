@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import API_URL from '../config'
 
 function Tasks() {
   const [tasks, setTasks] = useState([])
@@ -9,24 +10,24 @@ function Tasks() {
   const headers = { Authorization: `Bearer ${token}` }
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/tasks', { headers })
+    axios.get(`${API_URL}/api/tasks`, { headers })
       .then(res => setTasks(res.data))
   }, [])
 
   async function addTask() {
     if (!title.trim()) return
-    const res = await axios.post('http://localhost:5000/api/tasks', { title }, { headers })
+    const res = await axios.post(`${API_URL}/api/tasks`, { title }, { headers })
     setTasks([res.data, ...tasks])
     setTitle('')
   }
 
   async function toggleComplete(task) {
-    const res = await axios.put(`http://localhost:5000/api/tasks/${task._id}`, { completed: !task.completed }, { headers })
+    const res = await axios.put(`${API_URL}/api/tasks/${task._id}`, { completed: !task.completed }, { headers })
     setTasks(tasks.map(t => t._id === task._id ? res.data : t))
   }
 
   async function deleteTask(id) {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`, { headers })
+    await axios.delete(`${API_URL}/api/tasks/${id}`, { headers })
     setTasks(tasks.filter(t => t._id !== id))
   }
 

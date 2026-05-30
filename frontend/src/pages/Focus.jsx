@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
-
+import API_URL from '../config'
 function Focus() {
   const [timeLeft, setTimeLeft] = useState(25 * 60)
   const [running, setRunning] = useState(false)
@@ -12,7 +12,7 @@ function Focus() {
   const headers = { Authorization: `Bearer ${token}` }
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/sessions', { headers })
+    axios.get('${API_URL}/api/sessions', { headers })
       .then(res => setSessions(res.data))
   }, [])
 
@@ -36,7 +36,7 @@ function Focus() {
   }, [running])
 
   async function saveSession(duration) {
-    const res = await axios.post('http://localhost:5000/api/sessions', { duration: Math.floor(duration / 60) }, { headers })
+    const res = await axios.post('${API_URL}/api/sessions', { duration: Math.floor(duration / 60) }, { headers })
     setSessions(prev => [res.data, ...prev])
   }
 
@@ -52,7 +52,7 @@ function Focus() {
     setTimeLeft(25 * 60)
   }
   async function deleteSession(id) {
-  await axios.delete(`http://localhost:5000/api/sessions/${id}`, { headers })
+  await axios.delete(`${API_URL}/api/sessions/${id}`, { headers })
   setSessions(sessions.filter(s => s._id !== id))
 }
 

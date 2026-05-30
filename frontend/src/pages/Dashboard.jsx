@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import API_URL from '../config'
 function Dashboard() {
   const [tasks, setTasks] = useState([])
   const [sessions, setSessions] = useState([])
@@ -9,10 +9,10 @@ function Dashboard() {
     const token = localStorage.getItem('token')
     const headers = { Authorization: `Bearer ${token}` }
     
-    axios.get('http://localhost:5000/api/tasks', { headers })
+    axios.get('${API_URL}/api/tasks', { headers })
       .then(res => setTasks(res.data))
     
-    axios.get('http://localhost:5000/api/sessions', { headers })
+    axios.get('${API_URL}/api/sessions', { headers })
       .then(res => setSessions(res.data))
   }, [])
 

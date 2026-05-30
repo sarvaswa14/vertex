@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import API_URL from '../config'
 
 function Notes() {
   const [notes, setNotes] = useState([])
@@ -11,7 +12,7 @@ function Notes() {
   const headers = { Authorization: `Bearer ${token}` }
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/notes', { headers })
+    axios.get('${API_URL}/api/notes', { headers })
       .then(res => {
         setNotes(res.data)
         if (res.data.length > 0) {
@@ -23,7 +24,7 @@ function Notes() {
   }, [])
 
   async function createNote() {
-    const res = await axios.post('http://localhost:5000/api/notes', { title: 'Untitled', content: '' }, { headers })
+    const res = await axios.post('${API_URL}/api/notes', { title: 'Untitled', content: '' }, { headers })
     setNotes([res.data, ...notes])
     setSelected(res.data)
     setTitle(res.data.title)
@@ -31,12 +32,12 @@ function Notes() {
   }
 
   async function saveNote() {
-    await axios.put(`http://localhost:5000/api/notes/${selected._id}`, { title, content }, { headers })
+    await axios.put(`${API_URL}/api/notes/${selected._id}`, { title, content }, { headers })
     setNotes(notes.map(n => n._id === selected._id ? { ...n, title, content } : n))
   }
 
   async function deleteNote(id) {
-    await axios.delete(`http://localhost:5000/api/notes/${id}`, { headers })
+    await axios.delete(`${API_URL}/api/notes/${id}`, { headers })
     setNotes(notes.filter(n => n._id !== id))
     if (selected?._id === id) {
       setSelected(null)
