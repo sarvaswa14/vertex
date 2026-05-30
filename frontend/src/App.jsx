@@ -8,11 +8,12 @@ import Signup from './pages/Signup'
 import Tasks from './pages/Tasks'
 import Layout from './components/Layout'
 import ProtectedRoute from './components/ProtectedRoute'
-
+import { Navigate } from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>} />
