@@ -8,7 +8,10 @@ const sessionRoutes = require('./routes/sessions')
 const noteRoutes = require('./routes/notes')
 const authRoutes = require('./routes/auth')
 require('dotenv').config();
-app.use(cors())
+app.use(cors({
+  origin: ['https://focusos-mern.vercel.app', 'http://localhost:5173'],
+  credentials: true
+}))
 app.use(express.json())
 mongoose.connect(process.env.MONGO_URI).then(()=> console.log('Connected to MongoDB')).catch((err)=> console.log(err))
 app.use('/api/tasks',taskRoutes)
