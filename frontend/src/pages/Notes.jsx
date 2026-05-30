@@ -12,7 +12,7 @@ function Notes() {
   const headers = { Authorization: `Bearer ${token}` }
 
   useEffect(() => {
-    axios.get('${API_URL}/api/notes', { headers })
+    axios.get(`${API_URL}/api/notes`, { headers })
       .then(res => {
         setNotes(res.data)
         if (res.data.length > 0) {
@@ -24,7 +24,7 @@ function Notes() {
   }, [])
 
   async function createNote() {
-    const res = await axios.post('${API_URL}/api/notes', { title: 'Untitled', content: '' }, { headers })
+    const res = await axios.post(`${API_URL}/api/notes`, { title: 'Untitled', content: '' }, { headers })
     setNotes([res.data, ...notes])
     setSelected(res.data)
     setTitle(res.data.title)
