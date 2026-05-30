@@ -1,9 +1,9 @@
 const mongoose  = require('mongoose');
 const{ Schema} =mongoose;
-const TaskSchema = new Schema({
+const NotesSchema = new Schema({
     title: {type: String,required : true},
-    completed:{type : Boolean,default:false},
+    content:{type : String,default:''},
     createdAt:{type: Date,default: Date.now},
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
-module.exports = mongoose.model('Task',TaskSchema)
+module.exports = mongoose.model('Notes',NotesSchema)

@@ -1,4 +1,4 @@
-import { BrowserRouter , Routes , Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Analytics from './pages/Analytics'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -6,23 +6,23 @@ import Focus from './pages/Focus'
 import Notes from './pages/Notes'
 import Signup from './pages/Signup'
 import Tasks from './pages/Tasks'
+import Layout from './components/Layout'
+import ProtectedRoute from './components/ProtectedRoute'
 
-
-function App(){
+function App() {
   return (
-  <div>
     <BrowserRouter>
-      <Routes> 
-        <Route path="login" element={<Login />}/>
-        <Route path="signup" element={<Signup />}/>
-        <Route path="tasks" element={<Tasks />}/>
-        <Route path="focus" element={<Focus />}/>
-        <Route path="analytics" element={<Analytics />}/>
-        <Route path="dashboard" element={<Dashboard />}/>
-        <Route path="notes" element={<Notes/>}/>
-        </Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>} />
+        <Route path="/tasks" element={<ProtectedRoute><Layout><Tasks /></Layout></ProtectedRoute>} />
+        <Route path="/focus" element={<ProtectedRoute><Layout><Focus /></Layout></ProtectedRoute>} />
+        <Route path="/analytics" element={<ProtectedRoute><Layout><Analytics /></Layout></ProtectedRoute>} />
+        <Route path="/notes" element={<ProtectedRoute><Layout><Notes /></Layout></ProtectedRoute>} />
+      </Routes>
     </BrowserRouter>
-  </div>
   )
 }
+
 export default App

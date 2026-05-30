@@ -3,5 +3,6 @@ const {Schema} = mongoose
 const SessionSchema = new Schema({
     duration : { type : Number, default: 0 },
     completedAt :{type : Date , default : Date.now},
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
 module.exports = mongoose.model('Sessions',SessionSchema)
